@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'orange-juice';
+    src: url('../fonts/orange\ juice\ 2.0.ttf');
+}
+
+@font-face {
+    font-family: 'brookeS8';
+    src: url('../fonts/brookeS8.ttf');
+}
+
+body {
+    background: url(http://subtlepatterns.com/patterns/extra_clean_paper.png);
+}
+
+#root {
+    background-image: url("christmas-lights3.png");
+    background-repeat: no-repeat;
+}
+
+#prompt {
+    color: black;
+    text-align: center;
+    margin: 150px auto 65px auto;
+    font-family: 'orange-juice';
+    color: #555;
+    text-decoration: none;
+    font-size: 80px;
+    font-weight: 600;
+    letter-spacing: -3px;
+    line-height: 1;
+    text-shadow: #EDEDED 30px 2px 0;
+    position: relative;
+}
+
+#inputText {
+    margin: 0px auto 15px auto;
+    width: 50%;
+    /*background-color: #eaeaea;*/
+    background: #eee url(http://subtlepatterns.com/patterns/extra_clean_paper.png);
+    font-size: 50px;
+    font-family: 'orange-juice';
+    height: 70px;
+}
+
+#form {
+    display: block;
+}
+
+#btnAnalyze {
+    background-color: #c96060;
+    padding: 5px 15px 3px;
+    box-shadow: 2px 2px 10px black;
+    color: white;
+    font-family: 'brookeS8';
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#btnAnalyze:active {
+    box-shadow: none;
+    transform: translate(0, 2px);
+    outline: 0;
+}
+
+#btnAnalyze:focus {
+    outline:0;
+}
+
+#snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.snowflake {
+    padding-left: 15px;
+    font-family: Cambria, Georgia, serif;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #898b8e;
+    user-select: none;
+    z-index: 1000;
+}
+.snowflake:hover {
+    cursor: default;
+}
