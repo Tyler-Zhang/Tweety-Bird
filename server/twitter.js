@@ -13,12 +13,13 @@ const bodyParser = require('body-parser');
 
 // const moe = require('moe'); // TODO
 
+
 let app = express();
 app.use(bodyParser.json());
 
 let httpServer = http.createServer(app).listen(80);
 
-let key = JSON.parse('key.json');
+let key = JSON.parse('./key.json');
 let accessToken = key.accessToken;
 
 
