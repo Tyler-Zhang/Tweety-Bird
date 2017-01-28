@@ -2,16 +2,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/** Other components */
+import Input from 'input';
+
+
 class App extends React.Component{
+    constructor(){
+        super();
+
+        this.state = {
+            response: false,
+            responseData: null
+        }
+    }
+
+    query(word){
+        console.log(word);
+    }
+
     render(){
-        return (
-            <div class="container-fluid" style={{width: "100%", height: "100%"}}>
-                <h1 style={{margin: "100px"}}> Enter a topic below:</h1>
-                <div class="col-md-8 col-md-offset-2">
+        return(
+            <div class="container-fluid">
+                <div class="row">
+                    <Input query={this.query.bind(this)}/>
                 </div>
             </div>
         )
     }
+
+    
 }
 
-reactDOM.render(<App/>, document.getElementById("root"));
+ReactDOM.render(<App/>, document.getElementById("root"));
