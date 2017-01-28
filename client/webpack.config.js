@@ -29,6 +29,7 @@ if(!debug)
      resolve: {
          extensions: ["", ".js", ".jsx", ".scss", ".css"],
          modulesDirectories: [
+             path.resolve("./src"),
              path.resolve("./src/components"),
              path.resolve("./node_modules")
          ]
