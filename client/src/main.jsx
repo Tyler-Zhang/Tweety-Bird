@@ -41,7 +41,7 @@ class App extends React.Component{
             return(
                 <div class="container-fluid">
                     <div class="row">
-                        <Input query={this.query.bind(this)}/>
+                        <Input id="textBox" query={this.query.bind(this)}/>
                     </div>
                 </div>
             )

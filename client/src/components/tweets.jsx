@@ -31,6 +31,15 @@ export default class TweetView extends React.Component{
             else
                 positiveTweets.push(currentTweet);
         }
+        let sortFunc = (a, b) => {
+            if(a.retweet_count < b.retweet_count)
+              return 1;
+            else if(a.retweet_count == b.retweet_count)
+              return 0;
+            else return -1;
+        }
+        positiveTweets = positiveTweets.sort(sortFunc);
+        negativeTweets = negativeTweets.sort(sortFunc);
 
         this.state = {
             positiveTweets,
@@ -48,7 +57,7 @@ export default class TweetView extends React.Component{
 
     renderTweet(tweets){
         return tweets.map((t, i) => {
-            return <TweetBox key={i} gender={t.gender} retweets={t.retweets} showTweet={() => this.showTweet(t)}/>
+            return <TweetBox key={i} gender={t.gender} retweet_count={t.retweet_count} showTweet={() => this.showTweet(t)}/>
         });
     }
 

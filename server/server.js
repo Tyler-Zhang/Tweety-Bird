@@ -3,7 +3,7 @@ const PATH_CLIENT_BIN = '../client/bin/';
 const PATH_POST = '/getData';
 const NUM_PORT = 9001;
 
-const NUM_TWEETS = 20;
+const NUM_TWEETS = 6;
 
 const PATH_KEY = 'key.json';
 const PATH_BM_MODULE = './bluemix-module.js';
@@ -239,7 +239,7 @@ function fetchTwitter(keywords)
 
 function getURL(keywords)
 {
-    return 'https://api.twitter.com/1.1/search/tweets.json?result_type=popular&count=' + NUM_TWEETS + '&q=' + encodeURI(keywords);
+    return `https://api.twitter.com/1.1/search/tweets.json?result_type=mixed&count=${NUM_TWEETS}&q=` + encodeURIComponent(keywords);
 }
 
 function ensureHasAccessToken()
