@@ -50,12 +50,12 @@ export default class SentimentGenderGraph extends React.Component{
                     {
                         data: [maleCount, femaleCount],
                         backgroundColor: [
-                            "#FF6384",
-                            "#36A2EB"
+                            "#36A2EB",
+                            "#FF6384"
                         ],
                         hoverBackgroundColor: [
-                            "#FF6384",
-                            "#36A2EB"
+                            "#36A2EB",
+                            "#FF6384"
                         ]
                     }]
             }
@@ -67,14 +67,14 @@ export default class SentimentGenderGraph extends React.Component{
     render(){
         return(
             <div class="container-fluid">
-                <div class="row">
-                    <div class="container-fluid" class="col-md-6">
+                <div class="row" style={{"marginTop": "80px"}}>
+                    <div id="publicOpChart" class="container-fluid" class="col-md-6">
                         <h1 class="row text-center"> Public Opinion </h1>
-                        <div class="row"  style={{height:"500px"}} id="gauge" ref={() => this.renderSentimentGraph()}></div>
+                        <div class="row chart-cards"  style={{height:"500px"}} id="gauge" ref={() => this.renderSentimentGraph()}></div>
                     </div>
-                    <div class="container-fluid" class="col-md-5 col-md-offset-1">
+                    <div id="genderPieChart" class="container-fluid" class="col-md-5 col-md-offset-1">
                         <h1 class="row text-center"> Gender </h1>
-                        <canvas class="row" id="genderChart" ref={() => this.renderGenderGraph()}/>
+                        <canvas class="row chart-cards" id="genderChart" ref={() => this.renderGenderGraph()}/>
                     </div>
                 </div>
             </div>
