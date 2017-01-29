@@ -29,7 +29,7 @@ function analyzeEach(tweet){
                 tweet = tweet.text;
                 name = tweet.name;
                 retweets = tweet.retweet_count;
-                toneData = JSON.stringify(tone, null, 2);
+                toneData = tone["document_tones"];
                                
                 resolve({
                     tweet,
