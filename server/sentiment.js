@@ -1,6 +1,6 @@
 var watson = require('watson-developer-cloud');
 var alchemy_language = watson.alchemy_language({
-  api_key:  "01e79e4c7beaafc0d26bfe16186721d9ffabde9d"
+  api_key:  "68ce0f6fa0fc806efd2c6fcdce55202a343ac201"
 })
 
 
