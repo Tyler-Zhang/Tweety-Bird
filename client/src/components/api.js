@@ -1,4 +1,4 @@
-import fetch from 'whatwg-fetch';
+import 'whatwg-fetch';
 
 function base(url, body){
     return fetch(url, {
@@ -24,8 +24,8 @@ function base(url, body){
 }
 
 
-export function analyze(keywords){
-    return base("/getData", {keywords});
+export function analyze(keyword){
+    return base("/getData", {keyword});
 }
 
 export function testAnalyze(){
