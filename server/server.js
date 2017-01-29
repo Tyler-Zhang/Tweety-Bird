@@ -239,7 +239,7 @@ function fetchTwitter(keywords)
 
 function getURL(keywords)
 {
-    return 'https://api.twitter.com/1.1/search/tweets.json?result_type=mixed&count=' + NUM_TWEETS + '&q=' + encodeURI(keywords);
+    return 'https://api.twitter.com/1.1/search/tweets.json?result_type=mixed&lang=en&count=' + NUM_TWEETS + '&q=' + encodeURI(keywords);
 }
 
 function ensureHasAccessToken()
