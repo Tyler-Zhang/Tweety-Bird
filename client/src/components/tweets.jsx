@@ -85,25 +85,7 @@ export default class TweetView extends React.Component{
                     <div class="col-md-4" style={{"minHeight": "170px"}}>
                         {this.renderCurrentTweet()}
                     </div>
-                    <div class="col-md-2"></div>
-
-                    <div /*id="legend"*/ class="col-md-2">
-                        /*
-                        <div id="legendTitle">KEY</div>
-                        <div class="row" style={{"margin": "10px"}}>
-                            <div id="legendMale" class="col-xs-6"></div>
-                            <div class="col-xs-6">Males</div>
-                        </div>
-                        <div class="row" style={{"margin": "10px"}}>
-                            <div id="legendFemale" class="col-xs-6"></div>
-                            <div class="col-xs-6">Females</div>
-                        </div>
-                        <div class="row" style={{"margin": "10px"}}>
-                            <div id="legendNum" class="col-xs-6">Num</div>
-                            <div class="col-xs-6">Reposts</div>
-                        </div>
-                        */
-                    </div>
+                    <div class="col-md-4"></div>
 
                 </div>
 
