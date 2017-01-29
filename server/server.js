@@ -1,5 +1,5 @@
 
-const PATH_CLIENT_BIN = '';
+const PATH_CLIENT_BIN = '../client/bin/';
 const PATH_POST = '/getData';
 const NUM_PORT = 9001;
 

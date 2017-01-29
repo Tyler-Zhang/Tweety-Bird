@@ -1,9 +1,9 @@
-import fetch from 'whatwg-fetch';
+import 'whatwg-fetch';
 
 function base(url, body){
     return fetch(url, {
         method: "POST",
-        body,
+        body: JSON.stringify(body),
         headers:{
             "content-type": "application/json"
         }
@@ -20,12 +20,12 @@ function base(url, body){
             throw(d.body);
         else
             return d.body;
-    })
+    });
 }
 
 
-export function analyze(keywords){
-    return base("/analyze", {keywords});
+export function analyze(keyword){
+    return base("/getData", {keyword});
 }
 
 export function testAnalyze(){
