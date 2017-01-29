@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom';
 /** Other components */
 import Input from 'input';
 import Results from 'results';
-import {analyze as analyzeAPI} from "api";
+import {testAnalyze as analyzeAPI} from "api";
+
+
 
 
 class App extends React.Component{
@@ -30,8 +32,9 @@ class App extends React.Component{
         }).catch(e => {
             console.error(e);
             alert("An error has occurred");
-        })
-    }
+        });
+    }      
+ 
 
     render(){
         if(! this.state.response){
@@ -48,7 +51,7 @@ class App extends React.Component{
                     <div class="row">
                         <h1> Results for {this.state.queriedWord}</h1>
                     </div>
-                    <div class="row">
+                    <div class="row col-md-10 col-md-offset-1">
                         <Results data={this.state.responseData}/>
                     </div>
                 </div>

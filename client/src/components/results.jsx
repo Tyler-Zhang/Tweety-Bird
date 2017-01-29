@@ -1,16 +1,23 @@
 import React from 'react';
 import Chart from 'chart.js';
 
+import TweetView from 'tweets';
+import EmotionGraph from 'gEmotions';
 
 export default class Results extends React.Component{
 
+
     render(){
-        console.log(this.props.data);
 
         return(
-            <div> </div>
+            <div class="container-fluid"> 
+                <div class="row">
+                    <EmotionGraph tweets={this.props.data}/>
+                </div>
+                <div class="row">
+                    <TweetView tweets={this.props.data}/>
+                </div>
+            </div>
         )
-
     }
-
 }
