@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 /** Other components */
 import Input from 'input';
 import Results from 'results';
-import {testAnalyze as analyzeAPI} from "api";
+import {analyze as analyzeAPI} from "api";
 
 
 
