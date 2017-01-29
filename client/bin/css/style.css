@@ -119,8 +119,21 @@ body {
     transition: box-shadow 0.3s ease-in-out;
 }
 
+.top-border {
+    border-top: 1px solid lightgrey;
+    padding-top: 15px;
+}
+
+.tweet-assort-title {
+    font-family: 'bebas';
+    font-size: 30px;
+    color: #c4c4c4;
+    
+}
+
 #retweetNums {
     font-family: 'bebas';
+    color: #f4f4f4;
 }
 
 #retweetCircles {
@@ -142,7 +155,8 @@ body {
 #retweetSpeechBox {
     font-family: 'Arial';
     font-size: 25px;
-    font-weight: bold;
+    color: grey;
+    /*font-weight: bold;*/
     border-style: solid;
     border-width: 3px;
     background-color: transparent;
@@ -187,7 +201,8 @@ body {
 }
 
 
-/*#legend {
+/*
+#legend {
 
 }
 
@@ -217,8 +232,7 @@ body {
 }
 
 #legendNum {
-    /*text-align: left;*/
+    text-align: left;
     font-family: 'bebas';
     padding: 0 7px 0 0;
-}
-*/
+}*/
