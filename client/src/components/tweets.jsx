@@ -87,7 +87,8 @@ export default class TweetView extends React.Component{
                     </div>
                     <div class="col-md-2"></div>
 
-                    <div id="legend" class="col-md-2">
+                    <div /*id="legend"*/ class="col-md-2">
+                        /*
                         <div id="legendTitle">KEY</div>
                         <div class="row" style={{"margin": "10px"}}>
                             <div id="legendMale" class="col-xs-6"></div>
@@ -101,6 +102,7 @@ export default class TweetView extends React.Component{
                             <div id="legendNum" class="col-xs-6">Num</div>
                             <div class="col-xs-6">Reposts</div>
                         </div>
+                        */
                     </div>
 
                 </div>
