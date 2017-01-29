@@ -65,7 +65,7 @@ export default class TweetView extends React.Component{
             return(
                 <div id="retweetSpeechBox" style={{"borderColor": color}}>
                     <p style={{"fontWeight": "bold"}}> "{currentTweet.text}"</p>
-                    <p> - {currentTweet.name}</p>
+                    <p style={{"marginTop": "25px", "fontStyle": "italic"}}> - {currentTweet.name}</p>
                 </div>
             )
         }
@@ -84,7 +84,7 @@ export default class TweetView extends React.Component{
                     <div class="col-xs-4" style={{"textAlign": "center"}}>
                         {this.renderTweet(this.state.positiveTweets)}
                     </div>
-                    <div class="col-md-4" style={{"minHeight": "320px"}}>
+                    <div class="col-md-4" style={{"minHeight": "420px"}}>
                         {this.renderCurrentTweet()}
                     </div>
                     <div class="col-xs-4" style={{"paddingLeft": "25px"}}>
