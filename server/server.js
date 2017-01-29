@@ -159,7 +159,7 @@ function initServer()
                     return bmModule.analyze(input);
                 })
                 // Processes the previously processed tweets using another ML library
-                .then(function(input))
+                .then(function(input)
                 {
                     if (directOutput)
                         return input;
@@ -167,7 +167,7 @@ function initServer()
                     
                     
                     return input; // TODO
-                }
+                })
                 // Formats ML output into response for front-end
                 .then(function(output)
                 {
