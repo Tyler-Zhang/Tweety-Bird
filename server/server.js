@@ -3,7 +3,7 @@ const PATH_CLIENT_BIN = '../client/bin/';
 const PATH_POST = '/getData';
 const NUM_PORT = 80;
 
-const NUM_TWEETS = 50;
+const NUM_TWEETS = 25;
 
 const PATH_KEY = 'key.json';
 const PATH_BM_MODULE = './bluemix-module.js';
