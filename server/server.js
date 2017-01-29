@@ -1,12 +1,14 @@
 
+const PATH_CLIENT_BIN = '';
 const PATH_POST = '/getData';
+const NUM_PORT = 9001;
+
+const NUM_TWEETS = 20;
 
 const PATH_KEY = 'key.json';
 const PATH_BM_MODULE = './bluemix-module.js';
 const PATH_GA_MODULE = './gender-module.js';
 const PATH_SA_MODULE = './sentiment.js';
-
-const NUM_TWEETS = 6;
 
 
 const http = require('http');
@@ -24,8 +26,9 @@ const saModule = require(PATH_SA_MODULE);
 
 let app = express();
 app.use(bodyParser.json());
+app.use(express.static(PATH_CLIENT_BIN)); // app.static(PATH_CLIENT_BIN) ?
 
-let httpServer = http.createServer(app).listen(80);
+let httpServer = http.createServer(app).listen(NUM_PORT);
 
 let key;
 let accessToken;
