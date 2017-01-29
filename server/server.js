@@ -29,6 +29,7 @@ let args = process.argv.slice(2);
 
 let regenerateKey = false;
 let refreshKey = false;
+let directOutput = false;
 let verbose = false;
 
 let invalidFlags = false;
@@ -51,6 +52,10 @@ try
             {
                 refreshKey = true;
             }
+            else if (flag == '-o')
+            {
+                directOutput = true;
+            }
             else if (flag == '-v')
             {
                 verbose = true;
@@ -62,7 +67,6 @@ try
             }
         });
     }
-    
     
     if (regenerateKey)
     {
@@ -76,7 +80,6 @@ try
     {
         accessToken = key.accessToken;
     }
-    
     
     initServer();
 }
@@ -148,6 +151,8 @@ function initServer()
                 // Processes the parsed tweets into output data
                 .then(function(processedTweets)
                 {
+                    if (directOutput)
+                        return processedTweets;
                     
                     
                     
@@ -156,6 +161,9 @@ function initServer()
                 // Formats ML output to response for front-end
                 .then(function(output)
                 {
+                    if (directOutput)
+                        return output;
+                    
                     let response = output;
                     
                     
