@@ -34,10 +34,8 @@ function analyzeEach(tweet){
             if (err)
                 reject(err);
             else{
-                resolve({
-                    'tweet': tweet,
-                    'tone': mapTonesToScores(tone["document_tone"].tone_categories[INDEX_EMOTION_TONE].tones)
-                });
+                let returnObject = Object.assign({}, tweet, {tone: mapTonesToScores(tone["document_tone"].tone_categories[INDEX_EMOTION_TONE].tones)});
+                resolve(returnObject);
                 // Use to find/update indices
                 // console.log(tone["document_tone"].tone_categories[INDEX_EMOTION_TONE].tones);
             }

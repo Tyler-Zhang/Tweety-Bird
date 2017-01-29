@@ -159,33 +159,41 @@ function initServer()
                     console.log("ER:"); // OUT: ER
                     console.log(e);
                 })
+                .catch(function (e)
+                {
+                    if (e != undefined)
+                    {
+                        res.json(getResponseJSON(false, "BlueMix had a boo-boo"));
+                    }
+                    return Promise.reject();
+                })
                 // Processes the previously processed tweets using Lexalytics library
                 .then(function(input)
                 {
-                    
-                    
-                    
+
                     return input; // TODO
+                })
+                .catch(function (e)
+                {
+                    if (e != undefined)
+                    {
+                        res.json(getResponseJSON(false, "Lexie wasn't nice to us"));
+                    }
+                    return Promise.reject();
                 })
                 // Processes the previously processed tweets using Gender API library
                 .then(function(input)
                 {
-                    return {
-                        'tweet': input.tweet,
-                        'tone': input.tone,
-                        'gender': gaModule.analyze(input.tweet.name)
-                    };
+                    return input.map(v => Object.assign({}, v, {gender: gaModule.analyze(v.name)}));
                 })
-                // Formats ML output into response for front-end
-                .then(function(output)
+                .catch(function (e)
                 {
-                    return {
-                        'tweet': input.tweet.text,
-                        'gender': input.gender,
-                        'retweets': input.tweet.retweet_count,
-                        'level': 0.5, // TODO
-                        'tone': input.tone
-                    };
+                    console.log(e);
+                    if (e != undefined)
+                    {
+                        res.json(getResponseJSON(false, "Gender is not our friend"));
+                    }
+                    return Promise.reject();
                 })
                 // Sends reponse to client
                 .then(function(response)
