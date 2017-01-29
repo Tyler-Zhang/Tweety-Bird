@@ -165,7 +165,17 @@ function initServer()
                     console.log("ER:"); // OUT: ER
                     console.log(e);
                 })
-                // Processes the previously processed tweets using another ML library
+                // Processes the previously processed tweets using Lexalytics library
+                .then(function(input)
+                {
+                    if (directOutput)
+                        return input;
+                    
+                    
+                    
+                    return input; // TODO
+                })
+                // Processes the previously processed tweets using Gender API library
                 .then(function(input)
                 {
                     if (directOutput)
