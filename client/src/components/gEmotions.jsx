@@ -54,9 +54,20 @@ export default class EmotionGraph extends React.Component{
                     }
                 ]
             },
-            options: {}
+            options: {
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    enabled: false
+                },
+                scales: {
+                    yAxes: [{
+                        display: false
+                    }]
+                }
+            }
         });
-
         this.chart = chart;
     }
 

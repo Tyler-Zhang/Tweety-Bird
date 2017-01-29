@@ -26,10 +26,10 @@ export default class TweetView extends React.Component{
 
         for(let x = 0; x < props.tweets.length; x ++){
             let currentTweet = props.tweets[x];
-            if(currentTweet.level > 0.5)
-                positiveTweets.push(currentTweet);
-            else
+            if(currentTweet.agreeType == "negative")
                 negativeTweets.push(currentTweet);
+            else
+                positiveTweets.push(currentTweet);
         }
 
         this.state = {
