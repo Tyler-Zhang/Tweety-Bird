@@ -2,7 +2,7 @@
 const PATH_POST = '/post';
 
 const PATH_KEY = 'key.json';
-const PATH_BM_MODULE = 'bluemix-module.js';
+const PATH_BM_MODULE = './bluemix-module.js';
 
 const NUM_TWEETS = 6;
 
@@ -92,6 +92,7 @@ catch (e)
         console.log('Options:');
         console.log('   -c - regenerate access token (invalidate current token and generate new token)');
         console.log('   -r - refresh access token (fetch current token from Twitter or generate new token if no current token exists)');
+        console.log('   -o - output response from Twitter without ML processing')
         console.log('   -v - verbose output');
         
         process.exit(2);
@@ -138,17 +139,18 @@ function initServer()
                         return Promise.reject(jsonData.errors);
                     }
                     
-                    let arrStatuses = [];
-                    jsonData.statuses.forEach(function(tweet, index)
+                    /* Debug: Print Full Twitter Output
+                    console.log(jsonData);
+                    // */
+                    
+                    return jsonData.statuses.map(function(tweet)
                     {
-                        arrStatuses[index] = {
+                        return {
                             "name": tweet.user.name,
                             "text": tweet.text,
                             "retweet_count": tweet.retweet_count
                         };
                     });
-                    
-                    return arrStatuses;
                 })
                 // Processes the parsed tweets into output data using BlueMix library
                 .then(function(input)
@@ -156,7 +158,13 @@ function initServer()
                     if (directOutput)
                         return input;
                     
+                    console.log(input);
                     return bmModule.analyze(input);
+                })
+                .catch(function (e)
+                {
+                    console.log("ER:"); // OUT: ER
+                    console.log(e);
                 })
                 // Processes the previously processed tweets using another ML library
                 .then(function(input)
@@ -164,7 +172,7 @@ function initServer()
                     if (directOutput)
                         return input;
                     
-                    
+                    console.log(input);
                     
                     return input; // TODO
                 })
@@ -223,8 +231,6 @@ function getResponseJSON(success, body)
 
 function fetchTwitter(keywords)
 {
-    console.log(getURL(keywords));
-    
     return fetch(getURL(keywords),
         {
             headers: {

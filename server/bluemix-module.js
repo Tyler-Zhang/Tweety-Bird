@@ -19,11 +19,11 @@ function analyze(tweets){
 //tweet.retweet_count is the number of retweets
 //tweet.name is the username behind the tweet 
 function analyzeEach(tweet){
-    return new Promise(resolve, reject){
+    return new Promise(function(resolve, reject){
         tone_analyzer.tone({ text: tweet.text },
           function(err, tone) {
             if (err)
-              reject(err);
+                reject(err);
             else{
                 let text, name, toneData, retweet;
                 tweet = tweet.text;
@@ -40,5 +40,8 @@ function analyzeEach(tweet){
             }
               //console.log(JSON.stringify(tone, null, 2));
         });
-    } 
+    });
 }
+
+module.exports = {analyze};
+
