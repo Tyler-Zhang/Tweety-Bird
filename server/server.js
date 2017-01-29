@@ -4,6 +4,7 @@ const PATH_POST = '/post';
 const PATH_KEY = 'key.json';
 const PATH_BM_MODULE = './bluemix-module.js';
 const PATH_GA_MODULE = './gender-module.js';
+const PATH_LEX_MODULE = './lex-module.js';
 
 const NUM_TWEETS = 6;
 
@@ -18,6 +19,7 @@ var fs = require("fs");
 
 const bmModule = require(PATH_BM_MODULE);
 const gaModule = require(PATH_GA_MODULE);
+const lexModule = require(PATH_LEX_MODULE);
 
 
 let app = express();
@@ -116,109 +118,69 @@ function initServer()
             console.log(req.body);
             
             // Checks if keywords were given and proceeds accordingly
-            if (req.body.keyword != undefined)
+            if (req.body.keyword == undefined)
             {
-                // Fetches Twitter data as a JSON object
-                fetchTwitter(req.body.keyword)
-                .catch(function(e)
-                {
-                    if (e != undefined)
-                    {
-                        res.json(getResponseJSON(false, "Could not fetch data"));
-                    }
-                    return Promise.reject();
-                })
-                // Parses JSON data for processing by machine learning libraries
-                .then(function(jsonData)
-                {
-                    if (jsonData.errors != undefined || jsonData.statuses == undefined)
-                    {
-                        return Promise.reject(jsonData.errors);
-                    }
-                    
-                    // /* Debug: Print Full Twitter Output
-                    // console.log(jsonData);
-                    // */
-                    
-                    return jsonData.statuses.map(function(tweet)
-                    {
-                        return {
-                            "name": tweet.user.name,
-                            "text": tweet.text,
-                            "retweet_count": tweet.retweet_count
-                        };
-                    });
-                })
-                // Processes the parsed tweets into output data using BlueMix library
-                .then(function(input)
-                {
-                    return bmModule.analyze(input);
-                })
-                .catch(function (e)
-                {
-                    console.log("ER:"); // OUT: ER
-                    console.log(e);
-                })
-                .catch(function (e)
-                {
-                    if (e != undefined)
-                    {
-                        res.json(getResponseJSON(false, "BlueMix had a boo-boo"));
-                    }
-                    return Promise.reject();
-                })
-                // Processes the previously processed tweets using Lexalytics library
-                .then(function(input)
-                {
+                return res.json(getResponseJSON(false, "No keyword(s) specified"));
+            }
 
-                    return input; // TODO
-                })
-                .catch(function (e)
-                {
-                    if (e != undefined)
-                    {
-                        res.json(getResponseJSON(false, "Lexie wasn't nice to us"));
-                    }
-                    return Promise.reject();
-                })
-                // Processes the previously processed tweets using Gender API library
-                .then(function(input)
-                {
-                    return input.map(v => Object.assign({}, v, {gender: gaModule.analyze(v.name)}));
-                })
-                .catch(function (e)
-                {
-                    console.log(e);
-                    if (e != undefined)
-                    {
-                        res.json(getResponseJSON(false, "Gender is not our friend"));
-                    }
-                    return Promise.reject();
-                })
-                // Sends reponse to client
-                .then(function(response)
-                {
-                    if (verbose) // OUT: Tx
-                    {
-                        console.log('<>Tx:')
-                        console.log(response);
-                    }
-                    
-                    res.json(getResponseJSON(true, response));
-                })
-                .catch(function (e)
-                {
-                    if (e != undefined)
-                    {
-                        res.json(getResponseJSON(false, e));
-                    }
-                });
-                
-            }
-            else
+            // Fetches Twitter data as a JSON object
+            fetchTwitter(req.body.keyword)
+            .catch(function(e)
             {
-                res.json(getResponseJSON(false, "No keyword(s) specified"));
-            }
+                throw new Error("Fetch from twitter failed");
+            })
+            // Parses JSON data for processing by machine learning libraries
+            .then(function(jsonData)
+            {
+                if (jsonData.errors != undefined || jsonData.statuses == undefined)
+                {
+                    return Promise.reject(jsonData.errors);
+                }
+                
+                // /* Debug: Print Full Twitter Output
+                // console.log(jsonData);
+                // */
+                
+                let twitterData = jsonData.statuses.map(function(tweet)
+                {
+                    return {
+                        "name": tweet.user.name,
+                        "text": tweet.text,
+                        "retweet_count": tweet.retweet_count
+                    };
+                });
+                // Processes the parsed tweets into output data using BlueMix library
+                return bmModule.analyze(twitterData);
+            })
+            // Processes the previously processed tweets using Lexalytics library
+            .then(function(input)
+            {
+                return input.map(v => lexModule.analyze(v));
+            })
+            // Processes the previously processed tweets using Gender API library
+            .then(function(input)
+            {
+                console.log(input);
+                return input.map(v => Object.assign({}, v, {gender: gaModule.analyze(v.name)}));
+            })
+            // Sends reponse to client
+            .then(function(response)
+            {
+                if (verbose) // OUT: Tx
+                {
+                    console.log('<>Tx:')
+                    console.log(response);
+                }
+                
+                res.json(getResponseJSON(true, response));
+            })
+            .catch(function (e)
+            {
+                if (e != undefined)
+                {
+                    res.json(getResponseJSON(false, e));
+                }
+            });
         });
     })
     .catch(function (e)
