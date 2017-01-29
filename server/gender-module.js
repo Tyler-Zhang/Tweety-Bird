@@ -7,7 +7,7 @@ function analyze(twitter)
         return info.json();
     })
     .then(g => {
-        return Object.assign({}, twitter, g.gender);
+        return Object.assign({}, twitter, {gender: g.gender});
     });
     
     /*
