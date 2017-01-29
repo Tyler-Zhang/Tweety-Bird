@@ -1,12 +1,14 @@
 var fetch = require('node-fetch');
 
-function analyze(name)
+function analyze(twitter)
 {
-    return fetch("https://www.gender-api.com/get?name=" + name + "&key=SajkAoWsorDFguoFTa")
+    return fetch("https://www.gender-api.com/get?name=" + twitter.name + "&key=SajkAoWsorDFguoFTa")
     .then(function(info) {
         return info.json();
     })
-    .then(g =>  g.gender);
+    .then(g => {
+        return Object.assign({}, twitter, g.gender);
+    });
     
     /*
     if (Math.random() < 0.5)

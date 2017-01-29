@@ -166,7 +166,7 @@ function initServer()
             // Processes the previously processed tweets using Gender API library
             .then(function(input)
             {
-                return input.map(v => Object.assign({}, v, {gender: gaModule.analyze(v.name)}));
+                return Promise.all(input.map(v =>  gaModule.analyze(v)));
             })
             // Sends reponse to client
             .then(function(response)
@@ -239,7 +239,7 @@ function fetchTwitter(keywords)
 
 function getURL(keywords)
 {
-    return 'https://api.twitter.com/1.1/search/tweets.json?result_type=popular&count=' + NUM_TWEETS + '&q=' + encodeURI(keywords);
+    return 'https://api.twitter.com/1.1/search/tweets.json?result_type=mixed&count=' + NUM_TWEETS + '&q=' + encodeURI(keywords);
 }
 
 function ensureHasAccessToken()
