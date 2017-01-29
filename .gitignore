@@ -38,5 +38,3 @@ jspm_packages
 
 # Consumer keys and cached access token
 #/server/key.json
-
-client/bin/content.bundle.js
