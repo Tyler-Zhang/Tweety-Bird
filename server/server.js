@@ -3,6 +3,7 @@ const PATH_POST = '/post';
 
 const PATH_KEY = 'key.json';
 const PATH_BM_MODULE = './bluemix-module.js';
+const PATH_GA_MODULE = './gender-module.js';
 
 const NUM_TWEETS = 6;
 
@@ -16,6 +17,7 @@ const bodyParser = require('body-parser');
 var fs = require("fs");
 
 const bmModule = require(PATH_BM_MODULE);
+const gaModule = require(PATH_GA_MODULE);
 
 
 let app = express();
@@ -168,19 +170,22 @@ function initServer()
                 // Processes the previously processed tweets using Gender API library
                 .then(function(input)
                 {
-                    
-                    
-                    
-                    return input; // TODO
+                    return {
+                        'tweet': input.tweet,
+                        'tone': input.tone,
+                        'gender': gaModule.analyze(input.tweet.name)
+                    };
                 })
                 // Formats ML output into response for front-end
                 .then(function(output)
                 {
-                    let response = output;
-                    
-                    
-                    
-                    return response; // TODO: Format response for front-end
+                    return {
+                        'tweet': input.tweet.text,
+                        'gender': input.gender,
+                        'retweets': input.tweet.retweet_count,
+                        'level': 0.5, // TODO
+                        'tone': input.tone
+                    };
                 })
                 // Sends reponse to client
                 .then(function(response)

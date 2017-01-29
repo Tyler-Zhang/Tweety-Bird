@@ -35,9 +35,7 @@ function analyzeEach(tweet){
                 reject(err);
             else{
                 resolve({
-                    'tweet': tweet.text,
-                    'name': tweet.name,
-                    'retweets': tweet.retweet_count,
+                    'tweet': tweet,
                     'tone': mapTonesToScores(tone["document_tone"].tone_categories[INDEX_EMOTION_TONE].tones)
                 });
                 // Use to find/update indices
