@@ -11,6 +11,8 @@ const express = require('express');
 const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 
+var fs = require("fs");
+
 // const moe = require('moe'); // TODO
 
 
@@ -19,25 +21,102 @@ app.use(bodyParser.json());
 
 let httpServer = http.createServer(app).listen(80);
 
-let key = JSON.parse('./key.json');
-let accessToken = key.accessToken;
+let key;
+let accessToken;
+
+
+let args = process.argv.slice(2);
+
+let regenerateKey = false;
+let refreshKey = false;
+let verbose = false;
+
+let invalidFlags = false;
+
+let BreakException = {};
+
+try
+{
+    key = JSON.parse(fs.readFileSync("key.json"));
+    
+    if (args.length > 0)
+    {
+        args.forEach(function(flag, index)
+        {
+            if (flag == '-c')
+            {
+                regenerateKey = true;
+            }
+            else if (flag == '-r')
+            {
+                refreshKey = true;
+            }
+            else if (flag == '-v')
+            {
+                verbose = true;
+            }
+            else
+            {
+                invalidFlags = true;
+                throw BreakException;
+            }
+        });
+    }
+    
+    
+    if (regenerateKey)
+    {
+        regenerateAccessToken();
+    }
+    else if (refreshKey)
+    {
+        getAccessToken();
+    }
+    else
+    {
+        accessToken = key.accessToken;
+    }
+    
+    
+    initServer();
+}
+catch (e)
+{
+    if (e == BreakException)
+    {
+        console.log('Options:');
+        console.log('   -c - regenerate access token (invalidate current token and generate new token)');
+        console.log('   -r - refresh access token (fetch current token from Twitter or generate new token if no current token exists)');
+        console.log('   -v - verbose output');
+        
+        process.exit(2);
+    }
+    else
+    {
+        console.log('<>ER:'); // OUT: ER
+        console.log('Could not read key file');
+        console.log(e);
+        
+        process.exit(1);
+    }
+}
 
 
 function initServer()
 {
-    ensureHasKey()
+    ensureHasAccessToken()
     .then(function(resAccessToken)
     {
         app.post(PATH_POST, function(req, res)
         {
-            console.log('<>Rx:'); // TEST: Rx
+            console.log('<>Rx:'); // OUT: Rx
             console.log(req.body);
             
             // Checks if keywords were given and proceeds accordingly
             if (req.body.keyword != undefined)
             {
                 // Fetches Twitter data as a JSON object
-                fetchTwitter(getURL(req.body.keyword))
+                fetchTwitter(req.body.keyword)
                 .catch(function(e)
                 {
                     if (e != undefined)
@@ -46,24 +125,35 @@ function initServer()
                     }
                     return Promise.reject();
                 })
-                // Processes JSON data for parsing by machine learning library
+                // Parses JSON data for processing by machine learning library
                 .then(function(jsonData)
                 {
-                    if (jsonData.errors != undefined) // && jsonData.errors.length != 0
+                    if (jsonData.errors != undefined || jsonData.statuses == undefined)
                     {
                         return Promise.reject(jsonData.errors);
                     }
                     
-                    return jsonData; // TODO: Process JSON data
+                    let arrStatuses = [];
+                    jsonData.statuses.forEach(function(tweet, index)
+                    {
+                        arrStatuses[index] = {
+                            "name": tweet.user.name,
+                            "text": tweet.text,
+                            "retweet_count": tweet.retweet_count
+                        };
+                    });
+                    
+                    return arrStatuses;
                 })
-                // Parses the processed tweets into output data
+                // Processes the parsed tweets into output data
                 .then(function(processedTweets)
                 {
                     
                     
+                    
                     return processedTweets; // TODO: Call Moe's thing
                 })
-                // Formats library output for sending to client
+                // Formats ML output to response for front-end
                 .then(function(output)
                 {
                     let response = output;
@@ -71,13 +161,16 @@ function initServer()
                     
                     
                     
-                    return response; // TODO: Format response
+                    return response; // TODO: Format response for front-end
                 })
                 // Sends reponse to client
                 .then(function(response)
                 {
-                    console.log('<>Tx:') // TEST: Tx
-                    console.log(response);
+                    if (verbose) // OUT: Tx
+                    {
+                        console.log('<>Tx:')
+                        console.log(response);
+                    }
                     
                     res.json(getResponseJSON(true, response));
                 })
@@ -98,7 +191,7 @@ function initServer()
     })
     .catch(function (e)
     {
-        console.log('<>ER:'); // TEST: ER
+        console.log('<>ER:'); // OUT: ER
         console.log(e);
     });
 }
@@ -107,21 +200,31 @@ function getResponseJSON(success, body)
 {
     return {
         "success": success,
-        "body": body,
+        "body": body
     };
 }
 
 function fetchTwitter(keywords)
 {
-    return fetch(getURL(keywords))
+    console.log(getURL(keywords));
+    
+    return fetch(getURL(keywords),
+        {
+            headers: {
+                'authorization': 'Bearer ' + accessToken
+            }
+        })
     .then(function(res)
     {
         return res.json()
     })
     .then(function(jsonData)
     {
-        console.log('<>Dt:'); // TEST: Dt
-        console.log(jsonData);
+        if (verbose) // OUT: Dt
+        {
+            console.log('<>Dt:');
+            console.log(jsonData);
+        }
         
         return jsonData;
     })
@@ -138,7 +241,7 @@ function getURL(keywords)
     return 'https://api.twitter.com/1.1/search/tweets.json?result_type=popular&count=' + NUM_TWEETS + '&q=' + encodeURI(keywords);
 }
 
-function ensureHasAccessTokey()
+function ensureHasAccessToken()
 {
     if (accessToken == undefined)
     {
@@ -150,12 +253,33 @@ function ensureHasAccessTokey()
     }
 }
 
+function regenerateAccessToken()
+{
+    return
+    getAccessToken()
+    .then(function(token)
+    {
+        fetch('https://api.twitter.com/oauth2/invalidate_token',
+            {
+                method: 'POST',
+                body: 'access_token=' + token,
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                }
+            })
+    })
+    .then(function(res)
+    {
+        return getAccessToken();
+    })
+}
+
 function getAccessToken()
 {
     if (key.consumerKey == undefined || key.consumerSecret == undefined)
-        return;
+        return Promise.reject('Malformed key file');
     
-    let encodedKey = btoa(key.consumerKey + ":" + key.consumerSecret);
+    let encodedKey = new Buffer(key.consumerKey + ":" + key.consumerSecret).toString('base64');
     
     return fetch('https://api.twitter.com/oauth2/token',
         {
@@ -163,29 +287,34 @@ function getAccessToken()
             body: 'grant_type=client_credentials',
             headers: {
                 'authorization': 'Basic ' + encodedKey,
-                'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
             }
         })
     .then(function(res)
     {
-        return res.text() // TEST
+        return res.json();
     })
     .then(function(data)
     {
-        // TODO: Set key, save key
+        accessToken = data.access_token;
         
-        console.log("<>DA:"); // TEST: DA
-        console.log(data);
+        key = {
+            'consumerKey': key.consumerKey,
+            'consumerSecret': key.consumerSecret,
+            'accessToken': accessToken
+        };
         
-        return data; // TODO: Return key
+        fs.writeFile('key.json', JSON.stringify(key), 'utf8', function(e) {});
+        
+        return data;
     })
     .catch(function(e)
     {
-        console.log("<>EA: "); // TEST: EA
+        console.log("<>EA: "); // OUT: EA
         console.log(e);
+        
+        return Promise.reject('Error while generating access token');
     });
     
 }
-
-initServer();
 
