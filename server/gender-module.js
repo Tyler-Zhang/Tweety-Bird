@@ -14,9 +14,9 @@ function analyze(twitter)
 
     // /*
     if (Math.random() < 0.5)
-        return 'male';
+        return Object.assign({}, twitter, {gender: "male"});
     else
-        return 'female';
+        return Object.assign({}, twitter, {gender: "female"});
     // */
 }
 
