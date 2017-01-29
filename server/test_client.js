@@ -9,7 +9,7 @@ function sendPost(postBody) {
         { method: 'POST', body, headers: {'content-type': 'application/json'}})
     .then(function(res)
     {
-        return res.text()
+        return res.json()
     })
     .then(function(data)
     {
