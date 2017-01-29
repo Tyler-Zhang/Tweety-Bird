@@ -37,4 +37,4 @@ jspm_packages
 .node_repl_history
 
 # Consumer keys and cached access token
-/server/key.json
+#/server/key.json
