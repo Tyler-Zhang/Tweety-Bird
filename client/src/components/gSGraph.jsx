@@ -6,13 +6,13 @@ export default class SentimentGenderGraph extends React.Component{
     renderSentimentGraph(){
         let sumAgreeScore = 0;
         this.props.tweets.forEach(v => {
-            sumAgreeScore += v.agreeScore;
+            sumAgreeScore += v.agreeScore || 0;
         });
        var g = new JustGage({
             id: "gauge",
-            value: sumAgreeScore + this.props.tweets.length,
-            min: this.props.tweets.length,
-            max: this.props.tweets.length * 2,
+            value: sumAgreeScore,
+            min: -this.props.tweets.length,
+            max: this.props.tweets.length,
             hideValue:true,
             minTxt: "Agree",
             maxTxt: "Disagree",

@@ -64,7 +64,7 @@ export default class TweetView extends React.Component{
 
             return(
                 <div id="retweetSpeechBox" style={{"borderColor": color}}>
-                    <p style={{"fontWeight": "bold"}}> "{currentTweet.tweet}"</p>
+                    <p style={{"fontWeight": "bold"}}> "{currentTweet.text}"</p>
                     <p> - {currentTweet.name}</p>
                 </div>
             )

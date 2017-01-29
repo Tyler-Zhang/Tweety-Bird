@@ -14,7 +14,7 @@ export default class EmotionGraph extends React.Component{
         for(let x = 0; x < this.props.tweets.length; x ++){
             let currTweet = this.props.tweets[x];
             console.log(currTweet);
-            let retweets = currTweet.retweets;
+            let retweets = currTweet.retweet_count;
             totalRetweets += retweets;
 
             sumEmotions[0] += currTweet.tone.joy * (retweets + 1);
