@@ -28,6 +28,7 @@ export default class EmotionGraph extends React.Component{
     }
 
     renderChart(){
+        Chart.defaults.global.defaultFontSize = 25;
         if(this.chart)
             this.chart.destroy();
 
@@ -55,6 +56,7 @@ export default class EmotionGraph extends React.Component{
                 ]
             },
             options: {
+                defaultFontSize: 30,
                 legend: {
                     display: false
                 },
