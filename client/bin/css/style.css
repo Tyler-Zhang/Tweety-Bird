@@ -1,45 +1,67 @@
 @font-face {
-    font-family: 'orange-juice';
-    src: url('../fonts/orange\ juice\ 2.0.ttf');
+    font-family: 'bodoni-bold';
+    src: url('../fonts/BodoniFLF-Bold.ttf');
 }
 
 @font-face {
-    font-family: 'brookeS8';
-    src: url('../fonts/brookeS8.ttf');
+    font-family: 'toma-sans';
+    src: url('../fonts/TomaSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'bebas';
+    src: url('../fonts/BEBAS.TTF');
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url('../fonts/helvetica.ttf');
 }
 
 body {
-    background: url(http://subtlepatterns.com/patterns/extra_clean_paper.png);
+    background: url('world-map-grey.gif');
 }
-
+/*
 #root {
     background-image: url("christmas-lights3.png");
     background-repeat: no-repeat;
-}
+}*/
 
 #prompt {
     color: black;
     text-align: center;
     margin: 150px auto 65px auto;
-    font-family: 'orange-juice';
+    font-family: 'helvetica';
     color: #555;
     text-decoration: none;
     font-size: 80px;
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -3px;
     line-height: 1;
-    text-shadow: #EDEDED 30px 2px 0;
+    /*text-shadow: 0px 0px 20px grey;*/
     position: relative;
+    color: #000; /* Fallback for older browsers */
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#topicSpan {
+    color: red;
+    font-weight: 600;
+    font-weight: bold;
+    font-color: red;
+    display: inline;
 }
 
 #inputText {
     margin: 0px auto 15px auto;
     width: 50%;
     /*background-color: #eaeaea;*/
-    background: #eee url(http://subtlepatterns.com/patterns/extra_clean_paper.png);
+    background: transparent;
     font-size: 50px;
-    font-family: 'orange-juice';
+    font-family: 'bodoni-bold';
+    color: #7c7c7c;
     height: 70px;
+
 }
 
 #form {
@@ -48,25 +70,25 @@ body {
 
 #btnAnalyze {
     background-color: #c96060;
-    padding: 5px 15px 3px;
-    box-shadow: 2px 2px 10px black;
+    padding: 5px 15px 5px;
+    /*box-shadow: 0px 0px 10px black;*/
     color: white;
-    font-family: 'brookeS8';
+    font-family: 'bebas';
     font-weight: bold;
     font-size: 30px;
 }
 
-#btnAnalyze:active {
+/*#btnAnalyze:active {
     box-shadow: none;
     transform: translate(0, 2px);
     outline: 0;
-}
+}*/
 
 #btnAnalyze:focus {
     outline:0;
 }
 
-#snowflakeContainer {
+/*#snowflakeContainer {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -83,4 +105,4 @@ body {
 }
 .snowflake:hover {
     cursor: default;
-}
+}*/
