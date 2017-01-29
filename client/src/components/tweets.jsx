@@ -6,7 +6,7 @@ class TweetBox extends React.Component{
     render(){
         let color;
         if(this.props.gender == "male"){
-            color = "#68a4cc"; //a type of blue
+            color = "#68a4cc";     //a type of blue
         } else color = "#dd71cd";  //a type of pink
 
         return(
@@ -82,15 +82,27 @@ export default class TweetView extends React.Component{
 
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-md-4" style={{"minHeight": "150px"}}>
+                    <div class="col-md-4" style={{"minHeight": "170px"}}>
                         {this.renderCurrentTweet()}
                     </div>
-                    <div id="" class="col-md-4">
+                    <div class="col-md-2"></div>
 
-
-
-
+                    <div id="legend" class="col-md-2">
+                        <div id="legendTitle">KEY</div>
+                        <div class="row" style={{"margin": "10px"}}>
+                            <div id="legendMale" class="col-xs-6"></div>
+                            <div class="col-xs-6">Males</div>
+                        </div>
+                        <div class="row" style={{"margin": "10px"}}>
+                            <div id="legendFemale" class="col-xs-6"></div>
+                            <div class="col-xs-6">Females</div>
+                        </div>
+                        <div class="row" style={{"margin": "10px"}}>
+                            <div id="legendNum" class="col-xs-6">Num</div>
+                            <div class="col-xs-6">Reposts</div>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="row" style={{"margin": "25px"}}>

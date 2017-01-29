@@ -95,14 +95,14 @@ body {
     font-family: 'bebas';
     word-spacing: 13px;
     text-decoration: underline;
-    font-size: 50px;
+    font-size: 70px;
     color: grey;
     text-align: center;
-    margin-bottom: 25px;
+    margin: 60px auto;
 }
 
 #queriedWord {
-    font-size: 60px;
+    font-size: 70px;
     font-weight: bold;
     font-style: italic;
 }
@@ -152,14 +152,48 @@ body {
 }
 
 #tweetTitleRow {
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin: 70px auto;
 }
 
 #tweetTitle {
     text-align: center;
     font-family: 'bebas';
-    font-size: 40px;
+    font-size: 70px;
     color: grey;
     text-decoration: underline;
+}
+
+#legend {
+
+}
+
+#legendTitle {
+    text-align: center;
+    font-family: 'bebas';
+    font-size: 20px;
+    color: grey;
+}
+
+#legendMale {
+    background-color: #68a4cc;
+    float: left;
+    padding-top: 15px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+}
+
+#legendFemale {
+    background-color: #dd71cd;
+    float: left;
+    padding-top: 15px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+}
+
+#legendNum {
+    /*text-align: left;*/
+    font-family: 'bebas';
+    padding: 0 7px 0 0;
 }
