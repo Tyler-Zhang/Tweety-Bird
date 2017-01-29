@@ -6,12 +6,12 @@ class TweetBox extends React.Component{
     render(){
         let color;
         if(this.props.gender == "male"){
-            color = "#68a4cc";     //a type of blue
-        } else color = "#dd71cd";  //a type of pink
+            color = "#36A2EB";     //a type of blue
+        } else color = "#FF6384";  //a type of pink
 
         return(
             <div id="retweetCircles" style={{"backgroundColor": color}} onMouseOver={this.props.showTweet}>
-                <span id="retweetNums">{this.props.retweets}</span>
+                <span id="retweetNums">{this.props.retweet_count}</span>
             </div>
         )
     }
@@ -59,8 +59,8 @@ export default class TweetView extends React.Component{
         else{
             let color;
             if(currentTweet.gender == "male"){
-                color = "#68a4cc";
-            } else color = "#dd71cd";
+                color = "#36A2EB";
+            } else color = "#FF6384";
 
             return(
                 <div id="retweetSpeechBox" style={{"borderColor": color}}>
@@ -81,26 +81,17 @@ export default class TweetView extends React.Component{
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4" style={{"minHeight": "170px"}}>
-                        {this.renderCurrentTweet()}
-                    </div>
-                    <div class="col-md-4"></div>
-
-                </div>
-
-                <div class="row" style={{"margin": "25px"}}>
                     <div class="col-xs-4" style={{"textAlign": "center"}}>
                         {this.renderTweet(this.state.positiveTweets)}
                     </div>
-                    <div class="col-xs-2"></div>
-
-                    <div class="col-xs-2"></div>
+                    <div class="col-md-4" style={{"minHeight": "320px"}}>
+                        {this.renderCurrentTweet()}
+                    </div>
                     <div class="col-xs-4" style={{"paddingLeft": "25px"}}>
                         {this.renderTweet(this.state.negativeTweets)}
                     </div>
-                </div>
 
+                </div>
             </div>
         )
     }
