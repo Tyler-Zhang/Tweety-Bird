@@ -12,6 +12,7 @@
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
     "node-fetch": "^1.6.3",
+    "semantria-node": "^3.8.77",
     "watson-developer-cloud": "^2.15.5"
   }
 }
