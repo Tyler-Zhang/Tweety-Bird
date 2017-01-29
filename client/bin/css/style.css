@@ -18,14 +18,15 @@
     src: url('../fonts/helvetica.ttf');
 }
 
+@font-face {
+    font-family: 'speech-font';
+    src: url('../fonts/Easy\ Speech_free.ttf');
+}
+
 body {
     background: url('world-map-grey.gif');
+    background-repeat: repeat;
 }
-/*
-#root {
-    background-image: url("christmas-lights3.png");
-    background-repeat: no-repeat;
-}*/
 
 #prompt {
     color: black;
@@ -35,7 +36,7 @@ body {
     color: #555;
     text-decoration: none;
     font-size: 80px;
-    font-weight: bold;
+    /*font-weight: bold;*/
     letter-spacing: -3px;
     line-height: 1;
     /*text-shadow: 0px 0px 20px grey;*/
@@ -45,11 +46,11 @@ body {
 }
 
 #topicSpan {
-    color: red;
     font-weight: 600;
     font-weight: bold;
     font-color: red;
     display: inline;
+    color: #555;
 }
 
 #inputText {
@@ -88,21 +89,75 @@ body {
     outline:0;
 }
 
-/*#snowflakeContainer {
-    position: absolute;
-    left: 0px;
-    top: 0px;
+/*--------------SECOND PAGE------------------*/
+
+#resultsFor {
+    font-family: 'bebas';
+    font-size: 60px;
+    color: grey;
+    text-align: center;
+    margin-bottom: 25px;
 }
-.snowflake {
-    padding-left: 15px;
-    font-family: Cambria, Georgia, serif;
-    font-size: 14px;
-    line-height: 24px;
-    position: fixed;
-    color: #898b8e;
-    user-select: none;
-    z-index: 1000;
+
+#queriedWord {
+    font-weight: bold;
+    font-style: italic;
 }
-.snowflake:hover {
-    cursor: default;
-}*/
+
+#graphCard {
+    background-color: white;
+    box-shadow: 0 0 8px grey;
+    padding: 10px 10px 15px;
+    border-radius: 5px;
+}
+
+#graphCard:hover {
+    box-shadow: 0 0 25px grey;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#retweetNums {
+    font-family: 'bebas';
+}
+
+#retweetCircles {
+    width:50px;
+    height:50px;
+    margin:5px;
+    border-radius: 25px;
+    text-align: center;
+    padding-top: 13px;
+    float: left;
+}
+
+#retweetCircles:hover {
+    transition: 0.3s ease-in-out;
+    transform: translate(0, -3px);
+    box-shadow: 0 0 8px grey;
+}
+
+#retweetSpeechBox {
+    font-family: 'speech-font';
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #f7f7f7; /*very light grey*/
+    background-color: white;
+    border-style: solid;
+    border-width: 3px;
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#tweetTitleRow {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#tweetTitle {
+    text-align: center;
+    font-family: 'bebas';
+    font-size: 40px;
+    color: grey;
+    text-decoration: underline;
+}

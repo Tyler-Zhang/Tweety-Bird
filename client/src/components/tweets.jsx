@@ -6,12 +6,12 @@ class TweetBox extends React.Component{
     render(){
         let color;
         if(this.props.gender == "male"){
-            color = "blue";
-        } else color = "pink";
+            color = "#68a4cc"; //a type of blue
+        } else color = "#dd71cd";  //a type of pink
 
         return(
-            <div style={{width:"50px", height:"50px", "backgroundColor": color}} onMouseOver={this.props.showTweet}> 
-                <span>{this.props.retweets}</span>
+            <div id="retweetCircles" style={{"backgroundColor": color}} onMouseOver={this.props.showTweet}>
+                <span id="retweetNums">{this.props.retweets}</span>
             </div>
         )
     }
@@ -20,7 +20,7 @@ class TweetBox extends React.Component{
 export default class TweetView extends React.Component{
     constructor(props){
         super();
-        
+
         let positiveTweets = [];
         let negativeTweets = [];
 
@@ -36,7 +36,7 @@ export default class TweetView extends React.Component{
             positiveTweets,
             negativeTweets,
             currentTweet: null
-        } 
+        }
         console.log(this.state);
     }
 
@@ -59,13 +59,13 @@ export default class TweetView extends React.Component{
         else{
             let color;
             if(currentTweet.gender == "male"){
-                color = "blue";
-            } else color = "pink";
-            
+                color = "#68a4cc";
+            } else color = "#dd71cd";
+
             return(
-                <div style={{backgroundColor: color}}>
-                    <p> {currentTweet.tweet}</p>
-                    <p> {currentTweet.name}</p>
+                <div id="retweetSpeechBox" style={{"borderColor": color}}>
+                    <p style={{"fontWeight": "bold"}}> "{currentTweet.tweet}"</p>
+                    <p> - {currentTweet.name}</p>
                 </div>
             )
         }
@@ -74,18 +74,32 @@ export default class TweetView extends React.Component{
     render(){
         return(
             <div class="container-fluid">
+                <div class="row" id="tweetTitleRow">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" id="tweetTitle">Tweets</div>
+                    <div class="col-md-4"></div>
+                </div>
+
                 <div class="row">
-                    <div class="col-md-4">
-                        {this.renderTweet(this.state.positiveTweets)}
-                    </div>
+                    <div class="col-md-4"></div>
                     <div class="col-md-4">
                         {this.renderCurrentTweet()}
                     </div>
-                    <div class="col-md-4">
-                        {this.renderTweet(this.state.negativeTweets)};
+                    <div class="col-md-4"></div>
+                </div>
+
+                <div class="row" style={{"margin": "25px"}}>
+                    <div class="col-md-4" style={{"textAlign": "center"}}>
+                        {this.renderTweet(this.state.positiveTweets)}
+                    </div>
+                    <div class="col-md-2"></div>
+
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style={{"paddingLeft": "25px"}}>
+                        {this.renderTweet(this.state.negativeTweets)}
                     </div>
                 </div>
-            
+
             </div>
         )
     }

@@ -33,8 +33,8 @@ class App extends React.Component{
             console.error(e);
             alert("An error has occurred");
         });
-    }      
- 
+    }
+
 
     render(){
         if(! this.state.response){
@@ -49,7 +49,7 @@ class App extends React.Component{
             return(
                 <div class="container-fluid">
                     <div class="row">
-                        <h1> Results for {this.state.queriedWord}</h1>
+                        <h1 id="resultsFor" class="animated fadeInDown"> Results for <span id="queriedWord">{this.state.queriedWord}</span></h1>
                     </div>
                     <div class="row col-md-10 col-md-offset-1">
                         <Results data={this.state.responseData}/>
@@ -57,7 +57,7 @@ class App extends React.Component{
                 </div>
             )
         }
-    }    
+    }
 }
 
 ReactDOM.render(<App/>, document.getElementById("root"));

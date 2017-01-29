@@ -10,8 +10,8 @@ export default class Results extends React.Component{
     render(){
 
         return(
-            <div class="container-fluid"> 
-                <div class="row">
+            <div class="container-fluid">
+                <div class="row animated fadeInDown" id="graphCard">
                     <EmotionGraph tweets={this.props.data}/>
                 </div>
                 <div class="row">

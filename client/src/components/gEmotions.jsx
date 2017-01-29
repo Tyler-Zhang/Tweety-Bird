@@ -9,7 +9,7 @@ export default class EmotionGraph extends React.Component{
     formatData(){
         let totalRetweets = 0;
         let sumEmotions = new Array(5).fill(0);
-        
+
 
         for(let x = 0; x < this.props.tweets.length; x ++){
             let currTweet = this.props.tweets[x];
@@ -30,11 +30,11 @@ export default class EmotionGraph extends React.Component{
     renderChart(){
         if(this.chart)
             this.chart.destroy();
-        
+
         let sumEmotions = this.formatData();
         console.log(sumEmotions);
-        
-            // joy fear disgust sadness anger
+
+        // joy fear disgust sadness anger
         let data = this.props.data;
         let ctx = document.getElementById("cEmotion").getContext("2d");
         let chart = new Chart(ctx, {
@@ -45,7 +45,7 @@ export default class EmotionGraph extends React.Component{
                     {
                         data: sumEmotions,
                         backgroundColor: [
-
+                            '#f4dc27', '#a882bc', '#77b263', '#8ab1ce', '#c9364e'
                         ],
                         borderColor: [
 
@@ -56,7 +56,7 @@ export default class EmotionGraph extends React.Component{
             },
             options: {}
         });
-        
+
         this.chart = chart;
     }
 

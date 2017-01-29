@@ -33,11 +33,11 @@ export function testAnalyze(){
         resolve([
             {tweet: "Yo I'm an idiot", name:"dayshun", gender: "male", retweets: 100, level: 0.6, tone: {joy: 0.3, sadness: 0.1, fear: 0.6, disgust: 0.7, anger: 0.3}},
 
-            {tweet: "Hey, bitch", name:"dayshun", gender: "female", retweets: 200, level: 0.4, tone: {joy: 0.7, sadness: 0.1, fear: 0.3, disgust: 0.2, anger: 0.3}},
+            {tweet: "Hey", name:"dayshun", gender: "female", retweets: 200, level: 0.4, tone: {joy: 0.7, sadness: 0.1, fear: 0.3, disgust: 0.2, anger: 0.3}},
 
-            {tweet: "What's up, bitch?", name:"dayshun", gender: "male", retweets: 100, level: 0.5, tone: {joy: 0.1, sadness: 0.4, fear: 0.2, disgust: 0.7, anger: 0.9}},
+            {tweet: "What's up?", name:"dayshun", gender: "male", retweets: 100, level: 0.5, tone: {joy: 0.1, sadness: 0.4, fear: 0.2, disgust: 0.7, anger: 0.9}},
 
-            {tweet: "Fuck off, bitch", name:"dayshun", gender: "female", retweets: 50, level: 0.6, tone: {joy: 0.3, sadness: 0.1, fear: 0.6, disgust: 0.7, anger: 0.3}},
+            {tweet: "LEAVE!", name:"dayshun", gender: "female", retweets: 50, level: 0.6, tone: {joy: 0.3, sadness: 0.1, fear: 0.6, disgust: 0.7, anger: 0.3}},
 
             {tweet: "Really happy", name:"dayshun", gender: "male", retweets: 10, level: 0.8, tone: {joy: 0.9, sadness: 0.1, fear: 0.0, disgust: 0.0, anger: 0.0}},
 
