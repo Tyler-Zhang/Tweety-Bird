@@ -1,7 +1,7 @@
 
 const PATH_CLIENT_BIN = '../client/bin/';
 const PATH_POST = '/getData';
-const NUM_PORT = 9001;
+const NUM_PORT = 80;
 
 const NUM_TWEETS = 50;
 
