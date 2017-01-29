@@ -158,7 +158,6 @@ function initServer()
                     if (directOutput)
                         return input;
                     
-                    console.log(input);
                     return bmModule.analyze(input);
                 })
                 .catch(function (e)
@@ -172,7 +171,7 @@ function initServer()
                     if (directOutput)
                         return input;
                     
-                    console.log(input);
+                    
                     
                     return input; // TODO
                 })

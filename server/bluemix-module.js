@@ -1,3 +1,12 @@
+
+const INDEX_EMOTION_TONE = 0;
+
+const INDEX_ANGER = 0;
+const INDEX_DISGUST = 1;
+const INDEX_FEAR = 2;
+const INDEX_JOY = 3;
+const INDEX_SADNESS = 4;
+
 var watson = require('watson-developer-cloud');
 
 var tone_analyzer = watson.tone_analyzer({
@@ -29,12 +38,25 @@ function analyzeEach(tweet){
                     'tweet': tweet.text,
                     'name': tweet.name,
                     'retweets': tweet.retweet_count,
-                    'tone': tone["document_tones"]
+                    'tone': mapTonesToScores(tone["document_tone"].tone_categories[INDEX_EMOTION_TONE].tones)
                 });
+                // Use to find/update indices
+                // console.log(tone["document_tone"].tone_categories[INDEX_EMOTION_TONE].tones);
             }
               //console.log(JSON.stringify(tone, null, 2));
         });
     });
+}
+
+function mapTonesToScores(tones)
+{
+    return {
+        'joy': tones[INDEX_JOY].score,
+        'sadness': tones[INDEX_SADNESS].score,
+        'fear': tones[INDEX_FEAR].score,
+        'disgust': tones[INDEX_DISGUST].score,
+        'anger': tones[INDEX_ANGER].score
+    };
 }
 
 module.exports = {analyze};
