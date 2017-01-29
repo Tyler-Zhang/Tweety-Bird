@@ -1,0 +1,238 @@
+@font-face {
+    font-family: 'bodoni-bold';
+    src: url('../fonts/BodoniFLF-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'toma-sans';
+    src: url('../fonts/TomaSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'bebas';
+    src: url('../fonts/BEBAS.TTF');
+}
+
+@font-face {
+    font-family: 'helvetica';
+    src: url('../fonts/helvetica.ttf');
+}
+
+@font-face {
+    font-family: 'speech-font';
+    src: url('../fonts/Easy\ Speech_free.ttf');
+}
+
+body {
+    background: url('world-map-grey.gif');
+    background-repeat: repeat;
+}
+
+#prompt {
+    color: black;
+    text-align: center;
+    margin: 150px auto 65px auto;
+    font-family: 'helvetica';
+    color: #555;
+    text-decoration: none;
+    font-size: 80px;
+    /*font-weight: bold;*/
+    letter-spacing: -3px;
+    line-height: 1;
+    /*text-shadow: 0px 0px 20px grey;*/
+    position: relative;
+    color: #000; /* Fallback for older browsers */
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#topicSpan {
+    font-weight: 600;
+    font-weight: bold;
+    font-color: red;
+    display: inline;
+    color: #555;
+}
+
+#inputText {
+    margin: 0px auto 15px auto;
+    width: 50%;
+    /*background-color: #eaeaea;*/
+    background: transparent;
+    font-size: 50px;
+    font-family: 'bodoni-bold';
+    color: #7c7c7c;
+    height: 70px;
+
+}
+
+#form {
+    display: block;
+}
+
+#btnAnalyze {
+    background-color: #c96060;
+    padding: 5px 15px 5px;
+    /*box-shadow: 0px 0px 10px black;*/
+    color: white;
+    font-family: 'bebas';
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/*#btnAnalyze:active {
+    box-shadow: none;
+    transform: translate(0, 2px);
+    outline: 0;
+}*/
+
+#btnAnalyze:focus {
+    outline:0;
+}
+
+/*--------------SECOND PAGE------------------*/
+
+#resultsFor {
+    font-family: 'bebas';
+    word-spacing: 13px;
+    text-decoration: underline;
+    font-size: 70px;
+    color: grey;
+    text-align: center;
+    margin: 90px auto;
+}
+
+#queriedWord {
+    font-size: 70px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#graphCard {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 8px grey;
+    padding: 10px 10px 15px;
+    border-radius: 5px;
+}
+
+#graphCard:hover {
+    box-shadow: 0 0 25px grey;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.top-border {
+    border-top: 1px solid lightgrey;
+    padding-top: 15px;
+}
+
+.tweet-assort-title {
+    font-family: 'bebas';
+    font-size: 30px;
+    color: #c4c4c4;
+    
+}
+
+#retweetNums {
+    font-family: 'bebas';
+    color: #f4f4f4;
+}
+
+#retweetCircles {
+    width:50px;
+    height:50px;
+    margin:5px;
+    border-radius: 25px;
+    text-align: center;
+    padding-top: 13px;
+    float: left;
+}
+
+#retweetCircles:hover {
+    transition: 0.2s ease-in-out;
+    transform: translate(0, -4px);
+    box-shadow: 0 0 8px grey;
+}
+
+#retweetSpeechBox {
+    font-family: 'Arial';
+    font-size: 25px;
+    color: grey;
+    /*font-weight: bold;*/
+    border-style: solid;
+    border-width: 3px;
+    background-color: transparent;
+    border-radius: 55px 55px 55px 0;
+    padding: 25px;
+    position: relative;
+}
+
+#tweetTitleRow {
+    margin: 70px auto;
+}
+
+#tweetTitle {
+    text-align: center;
+    font-family: 'bebas';
+    font-size: 70px;
+    color: grey;
+    text-decoration: underline;
+}
+
+#publicOpChart h1, #genderPieChart h1 {
+    font-family: 'bebas';
+    font-size: 70px;
+    color: grey;
+    text-decoration: underline;
+    word-spacing: 13px;
+    margin: 20px auto 40px;
+}
+
+.chart-cards {
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 8px grey;
+    padding: 10px 10px 15px;
+    border-radius: 5px;
+}
+
+.chart-cards:hover {
+    box-shadow: 0 0 25px grey;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+
+/*
+#legend {
+
+}
+
+#legendTitle {
+    text-align: center;
+    font-family: 'bebas';
+    font-size: 20px;
+    color: grey;
+}
+
+#legendMale {
+    background-color: #68a4cc;
+    float: left;
+    padding-top: 15px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+}
+
+#legendFemale {
+    background-color: #dd71cd;
+    float: left;
+    padding-top: 15px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+}
+
+#legendNum {
+    text-align: left;
+    font-family: 'bebas';
+    padding: 0 7px 0 0;
+}*/
