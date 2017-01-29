@@ -25,17 +25,11 @@ function analyzeEach(tweet){
             if (err)
                 reject(err);
             else{
-                let text, name, toneData, retweet;
-                tweet = tweet.text;
-                name = tweet.name;
-                retweets = tweet.retweet_count;
-                toneData = tone["document_tones"];
-                               
                 resolve({
-                    tweet,
-                    name,
-                    retweets,
-                    toneData
+                    'tweet': tweet.text,
+                    'name': tweet.name,
+                    'retweets': tweet.retweet_count,
+                    'tone': tone["document_tones"]
                 });
             }
               //console.log(JSON.stringify(tone, null, 2));
