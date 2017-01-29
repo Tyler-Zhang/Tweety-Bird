@@ -51,7 +51,7 @@ class App extends React.Component{
                     <div class="row">
                         <h1> Results for {this.state.queriedWord}</h1>
                     </div>
-                    <div class="row">
+                    <div class="row col-md-10 col-md-offset-1">
                         <Results data={this.state.responseData}/>
                     </div>
                 </div>

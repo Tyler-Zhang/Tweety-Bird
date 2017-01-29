@@ -2,29 +2,22 @@ import React from 'react';
 import Chart from 'chart.js';
 
 import TweetView from 'tweets';
+import EmotionGraph from 'gEmotions';
 
 export default class Results extends React.Component{
 
-    chart_emotions(){
-        let data = this.props.data;
-
-
-    }
 
     render(){
-        console.log(this.props.data);
 
         return(
             <div class="container-fluid"> 
                 <div class="row">
-                    <canvas id="cEmotion" ref={() => this.chart_emotions()}/>
+                    <EmotionGraph tweets={this.props.data}/>
                 </div>
                 <div class="row">
-                    <TweetView tweets ={this.props.data}/>
+                    <TweetView tweets={this.props.data}/>
                 </div>
             </div>
         )
-
     }
-
 }

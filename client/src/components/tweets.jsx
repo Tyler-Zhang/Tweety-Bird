@@ -18,7 +18,6 @@ class TweetBox extends React.Component{
 }
 
 export default class TweetView extends React.Component{
-    
     constructor(props){
         super();
         
