@@ -4,7 +4,7 @@ const PATH_POST = '/getData';
 const PATH_KEY = 'key.json';
 const PATH_BM_MODULE = './bluemix-module.js';
 const PATH_GA_MODULE = './gender-module.js';
-// const PATH_LEX_MODULE = './lex-module.js';
+const PATH_SA_MODULE = './sentiment.js';
 
 const NUM_TWEETS = 6;
 
@@ -19,7 +19,7 @@ var fs = require("fs");
 
 const bmModule = require(PATH_BM_MODULE);
 const gaModule = require(PATH_GA_MODULE);
-// const lexModule = require(PATH_LEX_MODULE);
+const saModule = require(PATH_SA_MODULE);
 
 
 let app = express();
@@ -158,7 +158,7 @@ function initServer()
             // Processes the previously processed tweets using Lexalytics library
             .then(function(input)
             {
-                return input; // return input.map(v => lexModule.analyze(v));
+                return Promise.all(input.map(v => saModule.analyze(v)));
             })
             // Processes the previously processed tweets using Gender API library
             .then(function(input)
@@ -183,6 +183,8 @@ function initServer()
                 {
                     res.json(getResponseJSON(false, e));
                 }
+                
+                console.log(e);
             });
         });
     })

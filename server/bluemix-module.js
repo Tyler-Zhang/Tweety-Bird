@@ -34,10 +34,11 @@ function analyzeEach(tweet){
             if (err)
                 reject(err);
             else{
-                // /*
-                console.log(tone.document_tone.tone_categories[0]);
-                console.log(tone.document_tone.tone_categories[1]);
-                console.log(tone.document_tone.tone_categories[2]);
+                /*
+                // console.log(tone.document_tone.tone_categories[0]);
+                // console.log(tone.document_tone.tone_categories[1]);
+                console.log(tweet.text);
+                console.log(tone.document_tone.tone_categories[2].tones[3].score);
                 // */
                 
                 // TODO: Weight retweet_count
@@ -64,12 +65,20 @@ function mapTonesToScores(tones)
     return tone;
 }
 
-// /*
-analyzeEach({
-    text: "No, no, no, no, no! I won't have abortion in this world.",
-    retweet_count: "1",
-    name: "Hi"
-});
+/*
+var test = [
+    "No, no, no, no, no! I won't have abortion in this world.",
+    "I fucking love abortion.",
+    "Please. I don't want to comment on the issue."
+].map(function(tText)
+{
+    return {
+        text: tText,
+        retweet_count: "1",
+        name: "Hi"
+    };
+})
+analyze(test);
 // */
 
 module.exports = {analyze};
