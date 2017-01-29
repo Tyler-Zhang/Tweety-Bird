@@ -5,7 +5,7 @@ var alchemy_language = watson.alchemy_language({
 
 
 function analyze(tweet){
-    /*
+    // /*
     return new Promise(function (resolve, reject){
         var parameters = {
           extract: 'doc-sentiment',
@@ -27,6 +27,7 @@ function analyze(tweet){
     })
     // */
     
+    /*
     let val = 2 * Math.random() - 1;
     let type;
     
@@ -53,6 +54,7 @@ function analyze(tweet){
     }
     
     return Promise.resolve(rtnObj);
+    // */
 }
 
 module.exports = {analyze};
