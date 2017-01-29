@@ -1,10 +1,10 @@
 
-const PATH_POST = '/post';
+const PATH_POST = '/getData';
 
 const PATH_KEY = 'key.json';
 const PATH_BM_MODULE = './bluemix-module.js';
 const PATH_GA_MODULE = './gender-module.js';
-const PATH_LEX_MODULE = './lex-module.js';
+// const PATH_LEX_MODULE = './lex-module.js';
 
 const NUM_TWEETS = 6;
 
@@ -19,7 +19,7 @@ var fs = require("fs");
 
 const bmModule = require(PATH_BM_MODULE);
 const gaModule = require(PATH_GA_MODULE);
-const lexModule = require(PATH_LEX_MODULE);
+// const lexModule = require(PATH_LEX_MODULE);
 
 
 let app = express();
@@ -29,6 +29,7 @@ let httpServer = http.createServer(app).listen(80);
 
 let key;
 let accessToken;
+
 
 
 let args = process.argv.slice(2);
@@ -107,6 +108,7 @@ catch (e)
 }
 
 
+
 function initServer()
 {
     ensureHasAccessToken()
@@ -149,13 +151,14 @@ function initServer()
                         "retweet_count": tweet.retweet_count
                     };
                 });
+                
                 // Processes the parsed tweets into output data using BlueMix library
                 return bmModule.analyze(twitterData);
             })
             // Processes the previously processed tweets using Lexalytics library
             .then(function(input)
             {
-                return input.map(v => lexModule.analyze(v));
+                return input; // return input.map(v => lexModule.analyze(v));
             })
             // Processes the previously processed tweets using Gender API library
             .then(function(input)
@@ -189,6 +192,8 @@ function initServer()
         console.log(e);
     });
 }
+
+
 
 function getResponseJSON(success, body)
 {

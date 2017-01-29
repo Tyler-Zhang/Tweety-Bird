@@ -34,6 +34,14 @@ function analyzeEach(tweet){
             if (err)
                 reject(err);
             else{
+                // /*
+                console.log(tone.document_tone.tone_categories[0]);
+                console.log(tone.document_tone.tone_categories[1]);
+                console.log(tone.document_tone.tone_categories[2]);
+                // */
+                
+                // TODO: Weight retweet_count
+                
                 let returnObject = Object.assign({}, tweet, {tone: mapTonesToScores(tone["document_tone"].tone_categories[INDEX_EMOTION_TONE].tones)});
                 resolve(returnObject);
                 // Use to find/update indices
@@ -46,14 +54,23 @@ function analyzeEach(tweet){
 
 function mapTonesToScores(tones)
 {
-    return {
-        'joy': tones[INDEX_JOY].score,
-        'sadness': tones[INDEX_SADNESS].score,
-        'fear': tones[INDEX_FEAR].score,
-        'disgust': tones[INDEX_DISGUST].score,
-        'anger': tones[INDEX_ANGER].score
-    };
+    let tone = {};
+    
+    tones.forEach(function(t)
+    {
+        tone[t.tone_id] = t.score;
+    });
+    
+    return tone;
 }
+
+// /*
+analyzeEach({
+    text: "No, no, no, no, no! I won't have abortion in this world.",
+    retweet_count: "1",
+    name: "Hi"
+});
+// */
 
 module.exports = {analyze};
 

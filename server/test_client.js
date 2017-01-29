@@ -5,7 +5,7 @@ function sendPost(postBody) {
     
     let body = JSON.stringify(postBody);
     
-    fetch('http://localhost/post',
+    fetch('http://localhost/getData',
         { method: 'POST', body, headers: {'content-type': 'application/json'}})
     .then(function(res)
     {
