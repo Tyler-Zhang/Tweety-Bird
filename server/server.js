@@ -54,10 +54,6 @@ try
             {
                 refreshKey = true;
             }
-            else if (flag == '-o')
-            {
-                directOutput = true;
-            }
             else if (flag == '-v')
             {
                 verbose = true;
@@ -92,7 +88,6 @@ catch (e)
         console.log('Options:');
         console.log('   -c - regenerate access token (invalidate current token and generate new token)');
         console.log('   -r - refresh access token (fetch current token from Twitter or generate new token if no current token exists)');
-        console.log('   -o - output response from Twitter without ML processing')
         console.log('   -v - verbose output');
         
         process.exit(2);
@@ -139,8 +134,8 @@ function initServer()
                         return Promise.reject(jsonData.errors);
                     }
                     
-                    /* Debug: Print Full Twitter Output
-                    console.log(jsonData);
+                    // /* Debug: Print Full Twitter Output
+                    // console.log(jsonData);
                     // */
                     
                     return jsonData.statuses.map(function(tweet)
@@ -155,9 +150,6 @@ function initServer()
                 // Processes the parsed tweets into output data using BlueMix library
                 .then(function(input)
                 {
-                    if (directOutput)
-                        return input;
-                    
                     return bmModule.analyze(input);
                 })
                 .catch(function (e)
@@ -168,8 +160,6 @@ function initServer()
                 // Processes the previously processed tweets using Lexalytics library
                 .then(function(input)
                 {
-                    if (directOutput)
-                        return input;
                     
                     
                     
@@ -178,8 +168,6 @@ function initServer()
                 // Processes the previously processed tweets using Gender API library
                 .then(function(input)
                 {
-                    if (directOutput)
-                        return input;
                     
                     
                     
@@ -188,9 +176,6 @@ function initServer()
                 // Formats ML output into response for front-end
                 .then(function(output)
                 {
-                    if (directOutput)
-                        return output;
-                    
                     let response = output;
                     
                     
