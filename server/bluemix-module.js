@@ -26,12 +26,17 @@ function analyzeEach(tweet){
               reject(err);
             else{
                 let text, name, toneData, retweet;
-                text = tweet.text;
+                tweet = tweet.text;
                 name = tweet.name;
-                retweet = tweet.retweet_count;
+                retweets = tweet.retweet_count;
                 toneData = JSON.stringify(tone, null, 2);
                                
-                resolve({text, name, toneData, retweet})
+                resolve({
+                    tweet,
+                    name,
+                    retweets,
+                    toneData
+                });
             }
               //console.log(JSON.stringify(tone, null, 2));
         });

@@ -1,6 +1,8 @@
 
 const PATH_POST = '/post';
-// const PATH_MOE = ''; // TODO
+
+const PATH_KEY = 'key.json';
+const PATH_BM_MODULE = 'bluemix-module.js';
 
 const NUM_TWEETS = 6;
 
@@ -13,7 +15,7 @@ const bodyParser = require('body-parser');
 
 var fs = require("fs");
 
-// const moe = require('moe'); // TODO
+const bmModule = require(PATH_BM_MODULE);
 
 
 let app = express();
@@ -38,7 +40,7 @@ let BreakException = {};
 
 try
 {
-    key = JSON.parse(fs.readFileSync("key.json"));
+    key = JSON.parse(fs.readFileSync(PATH_KEY));
     
     if (args.length > 0)
     {
@@ -128,7 +130,7 @@ function initServer()
                     }
                     return Promise.reject();
                 })
-                // Parses JSON data for processing by machine learning library
+                // Parses JSON data for processing by machine learning libraries
                 .then(function(jsonData)
                 {
                     if (jsonData.errors != undefined || jsonData.statuses == undefined)
@@ -148,24 +150,31 @@ function initServer()
                     
                     return arrStatuses;
                 })
-                // Processes the parsed tweets into output data
-                .then(function(processedTweets)
+                // Processes the parsed tweets into output data using BlueMix library
+                .then(function(input)
                 {
                     if (directOutput)
-                        return processedTweets;
+                        return input;
                     
-                    
-                    
-                    return processedTweets; // TODO: Call Moe's thing
+                    return bmModule.analyze(input);
                 })
-                // Formats ML output to response for front-end
+                // Processes the previously processed tweets using another ML library
+                .then(function(input))
+                {
+                    if (directOutput)
+                        return input;
+                    
+                    
+                    
+                    return input; // TODO
+                }
+                // Formats ML output into response for front-end
                 .then(function(output)
                 {
                     if (directOutput)
                         return output;
                     
                     let response = output;
-                    
                     
                     
                     
