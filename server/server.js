@@ -163,7 +163,6 @@ function initServer()
             // Processes the previously processed tweets using Gender API library
             .then(function(input)
             {
-                console.log(input);
                 return input.map(v => Object.assign({}, v, {gender: gaModule.analyze(v.name)}));
             })
             // Sends reponse to client

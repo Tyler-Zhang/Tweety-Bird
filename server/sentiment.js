@@ -4,8 +4,8 @@ var alchemy_language = watson.alchemy_language({
 })
 
 
-
 function analyze(tweet){
+    /*
     return new Promise(function (resolve, reject){
         var parameters = {
           extract: 'doc-sentiment',
@@ -25,6 +25,34 @@ function analyze(tweet){
           }
         });
     })
+    // */
+    
+    let val = 2 * Math.random() - 1;
+    let type;
+    
+    if (-0.2 < val && val < 0.2)
+        type = 'neutral';
+    else if (val > 0)
+        type = 'positive';
+    else
+        type = 'negative';
+    
+    let rtnObj;
+    if (type == 'neutral')
+    {
+        rtnObj = Object.assign({}, tweet, {
+            agreeType: type
+        });
+    }
+    else
+    {
+        rtnObj = Object.assign({}, tweet, {
+            agreeType: type,
+            agreeScore: val
+        });
+    }
+    
+    return Promise.resolve(rtnObj);
 }
 
 module.exports = {analyze};
