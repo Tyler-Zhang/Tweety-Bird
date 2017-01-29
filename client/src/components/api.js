@@ -31,25 +31,25 @@ export function analyze(keywords){
 export function testAnalyze(){
     return new Promise((resolve) => {
         resolve([
-            {tweet: "Yo I'm an idiot", name:"dayshun", gender: "male", retweets: 100, agreeType: "positive", level: 0.6, tone: {joy: 0.3, sadness: 0.1, fear: 0.6, disgust: 0.7, anger: 0.3}},
+            {tweet: "Yo I'm an idiot", name:"dayshun", gender: "male", retweets: 100, agreeScore: 1, agreeType: "positive", level: 0.6, tone: {joy: 0.3, sadness: 0.1, fear: 0.6, disgust: 0.7, anger: 0.3}},
 
-            {tweet: "Hey", name:"dayshun", gender: "female", retweets: 200, agreeType: "negative", level: 0.4, tone: {joy: 0.7, sadness: 0.1, fear: 0.3, disgust: 0.2, anger: 0.3}},
+            {tweet: "Hey", name:"dayshun", gender: "female", retweets: 200, agreeScore: -0.3, agreeType: "negative", level: 0.4, tone: {joy: 0.7, sadness: 0.1, fear: 0.3, disgust: 0.2, anger: 0.3}},
 
-            {tweet: "What's up?", name:"dayshun", gender: "male", retweets: 100, agreeType: "positive", level: 0.5, tone: {joy: 0.1, sadness: 0.4, fear: 0.2, disgust: 0.7, anger: 0.9}},
+            {tweet: "What's up?", name:"dayshun", gender: "male", retweets: 100, agreeScore: -0.3, agreeType: "positive", level: 0.5, tone: {joy: 0.1, sadness: 0.4, fear: 0.2, disgust: 0.7, anger: 0.9}},
 
-            {tweet: "LEAVE!", name:"dayshun", gender: "female", retweets: 50, agreeType: "positive", level: 0.6, tone: {joy: 0.3, sadness: 0.1, fear: 0.6, disgust: 0.7, anger: 0.3}},
+            {tweet: "LEAVE!", name:"dayshun", gender: "female", retweets: 50, agreeScore: -0.3, agreeType: "positive", level: 0.6, tone: {joy: 0.3, sadness: 0.1, fear: 0.6, disgust: 0.7, anger: 0.3}},
 
-            {tweet: "Really happy", name:"dayshun", gender: "male", retweets: 10, agreeType: "negative", level: 0.8, tone: {joy: 0.9, sadness: 0.1, fear: 0.0, disgust: 0.0, anger: 0.0}},
+            {tweet: "Really happy", name:"dayshun", gender: "male", retweets: 10, agreeScore: -0.3, agreeType: "negative", level: 0.8, tone: {joy: 0.9, sadness: 0.1, fear: 0.0, disgust: 0.0, anger: 0.0}},
 
-            {tweet: "Really sad", name:"dayshun", gender: "female", retweets: 0, agreeType: "positive", level: 0.3, tone: {joy: 0.0, sadness: 1.0, fear: 0.1, disgust: 0.1, anger: 0.1}},
+            {tweet: "Really sad", name:"dayshun", gender: "female", retweets: 0, agreeScore: -0.3, agreeType: "positive", level: 0.3, tone: {joy: 0.0, sadness: 1.0, fear: 0.1, disgust: 0.1, anger: 0.1}},
 
-            {tweet: "Really angry", name:"dayshun", gender: "male", retweets: 40, agreeType: "negative", level: 0.9, tone: {joy: 0.1, sadness: 0.1, fear: 0.1, disgust: 0.1, anger: 0.9}},
+            {tweet: "Really angry", name:"dayshun", gender: "male", retweets: 40, agreeScore: 1, agreeType: "negative", level: 0.9, tone: {joy: 0.1, sadness: 0.1, fear: 0.1, disgust: 0.1, anger: 0.9}},
 
-            {tweet: "Really Disgusted", name:"dayshun", gender: "female", retweets: 300, agreeType: "negative", level: 0.4, tone: {joy: 0.1, sadness: 0.1, fear: 0.1, disgust: 1.0, anger: 0.2}},
+            {tweet: "Really Disgusted", name:"dayshun", gender: "female", retweets: 300, agreeScore: 2, agreeType: "negative", level: 0.4, tone: {joy: 0.1, sadness: 0.1, fear: 0.1, disgust: 1.0, anger: 0.2}},
 
-            {tweet: "Really scared", name:"dayshun", gender: "male", retweets: 1000, agreeType: "positive", level: 0.1, tone: {joy: 0.1, sadness: 0.3, fear: 1.0, disgust: 0.2, anger: 0.0}},
+            {tweet: "Really scared", name:"dayshun", gender: "male", retweets: 1000, agreeScore: 1, agreeType: "positive", level: 0.1, tone: {joy: 0.1, sadness: 0.3, fear: 1.0, disgust: 0.2, anger: 0.0}},
 
-            {tweet: "A little bit of everything", name:"dayshun", gender: "female", retweets: 65, agreeType: "positive", level: 1.0, tone: {joy: 0.5, sadness: 0.5, fear: 0.5, disgust: 0.5, anger: 0.5}}
+            {tweet: "A little bit of everything", name:"dayshun", gender: "female", retweets: 65, agreeScore: 1, agreeType: "positive", level: 1.0, tone: {joy: 0.5, sadness: 0.5, fear: 0.5, disgust: 0.5, anger: 0.5}}
             ])
     })
 }
