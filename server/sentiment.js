@@ -7,7 +7,7 @@ var alchemy_language = watson.alchemy_language({
 function analyze(tweet){
     // /*
     return new Promise(function (resolve, reject){
-        var parameters = {
+        let parameters = {
           extract: 'doc-sentiment',
           sentiment: 1,
           text: tweet.text
@@ -20,7 +20,7 @@ function analyze(tweet){
                   agreeType: response.docSentiment.type,
                   agreeScore: response.docSentiment.score
               });
-              console.log(rtnObj);
+              // console.log(rtnObj);
               resolve(rtnObj);
           }
         });
