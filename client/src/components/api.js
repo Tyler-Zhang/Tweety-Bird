@@ -45,7 +45,7 @@ export function testAnalyze(){
 
             {tweet: "Really angry", name:"dayshun", gender: "male", retweets: 40, level: 0.9, tone: {joy: 0.1, sadness: 0.1, fear: 0.1, disgust: 0.1, anger: 0.9}},
 
-            {tweet: "Really Disgusted", name:"dayshun", gender: "female", retweets: 300, level: 0.6, tone: {joy: 0.1, sadness: 0.1, fear: 0.1, disgust: 1.0, anger: 0.2}},
+            {tweet: "Really Disgusted", name:"dayshun", gender: "female", retweets: 300, level: 0.4, tone: {joy: 0.1, sadness: 0.1, fear: 0.1, disgust: 1.0, anger: 0.2}},
 
             {tweet: "Really scared", name:"dayshun", gender: "male", retweets: 1000, level: 0.1, tone: {joy: 0.1, sadness: 0.3, fear: 1.0, disgust: 0.2, anger: 0.0}},
 

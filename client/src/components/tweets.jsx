@@ -82,20 +82,25 @@ export default class TweetView extends React.Component{
 
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" style={{"minHeight": "150px"}}>
                         {this.renderCurrentTweet()}
                     </div>
-                    <div class="col-md-4"></div>
+                    <div id="" class="col-md-4">
+
+
+
+
+                    </div>
                 </div>
 
                 <div class="row" style={{"margin": "25px"}}>
-                    <div class="col-md-4" style={{"textAlign": "center"}}>
+                    <div class="col-xs-4" style={{"textAlign": "center"}}>
                         {this.renderTweet(this.state.positiveTweets)}
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-xs-2"></div>
 
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4" style={{"paddingLeft": "25px"}}>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-4" style={{"paddingLeft": "25px"}}>
                         {this.renderTweet(this.state.negativeTweets)}
                     </div>
                 </div>

@@ -93,13 +93,16 @@ body {
 
 #resultsFor {
     font-family: 'bebas';
-    font-size: 60px;
+    word-spacing: 13px;
+    text-decoration: underline;
+    font-size: 50px;
     color: grey;
     text-align: center;
     margin-bottom: 25px;
 }
 
 #queriedWord {
+    font-size: 60px;
     font-weight: bold;
     font-style: italic;
 }
@@ -131,8 +134,8 @@ body {
 }
 
 #retweetCircles:hover {
-    transition: 0.3s ease-in-out;
-    transform: translate(0, -3px);
+    transition: 0.2s ease-in-out;
+    transform: translate(0, -4px);
     box-shadow: 0 0 8px grey;
 }
 
@@ -140,13 +143,12 @@ body {
     font-family: 'speech-font';
     font-size: 25px;
     font-weight: bold;
-    background-color: #f7f7f7; /*very light grey*/
-    background-color: white;
     border-style: solid;
     border-width: 3px;
     background-color: transparent;
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 55px 55px 55px 0;
+    padding: 25px;
+    position: relative;
 }
 
 #tweetTitleRow {
