@@ -31,5 +31,8 @@ _The main screen_
 
 <br/>
 
+___
+<br/>
+
 ![](http://i.imgur.com/RBhpzRc.png)
 _Example result screen_
