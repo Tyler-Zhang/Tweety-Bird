@@ -21621,15 +21621,19 @@
 	    function Input() {
 	        _classCallCheck(this, Input);
 
-	        return _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
+
+	        _this.clicked = false;
+	        return _this;
 	    }
 
 	    _createClass(Input, [{
 	        key: "submit",
 	        value: function submit() {
+	            if (this.clicked) return;
 	            var input = document.getElementById("inputText");
 	            var text = input.value;
-
+	            this.clicked = true;
 	            this.props.query(text);
 	        }
 	    }, {

@@ -1,11 +1,17 @@
 import React from "react";
 
 export default class Input extends React.Component{
-
+    
+    constructor(){
+        super()
+        this.clicked = false;
+    }
     submit(){
+        if(this.clicked)
+            return;
         let input = document.getElementById("inputText");
         let text = input.value;
-
+        this.clicked = true;
         this.props.query(text);
     }
 
