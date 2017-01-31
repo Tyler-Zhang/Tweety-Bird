@@ -21,7 +21,7 @@ ___
 * React
 * Nodejs
 * IBM Blue-mix
-* IBM Alchemy
+* IBM AlchemyAPI
 * Gender API
 
 ## ScreenShots
